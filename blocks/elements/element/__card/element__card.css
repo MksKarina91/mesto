@@ -1,0 +1,11 @@
+.element__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  background-color: #FFFF;
+  border-style: none;
+  margin: 0;
+}
