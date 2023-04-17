@@ -18,6 +18,7 @@
 @import url(../blocks/elements/element/element.css);
 @import url(../blocks/elements/element/__image/element__image.css);
 @import url(../blocks/elements/element/__like/element__like.css);
+@import url(../blocks/elements/element/__like_active/element__like_active.css);
 @import url(../blocks/elements/element/__card/element__card.css);
 @import url(../blocks/elements/element/__title/element__title.css);
 @import url(../blocks/elements/element/__group/element__group.css);
