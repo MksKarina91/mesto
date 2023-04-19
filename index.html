@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="author" content="Mitiunina Karina">
+    <meta name="description" content="">
     <title>Место</title>
     <link rel="stylesheet" href="./pages/index.css">
 </head>
@@ -12,13 +14,10 @@
     <div class="page">
         <header class="header">
             <img class="header__logo" src="./images/header_logo.svg" alt="Место">
-            <div class="header__line"></div>
         </header>
         <main class="content">
             <section class="profile">
-                <div class="profile__image">
                     <img class="profile__image-avatar" src="./images/image.jpg" alt="Жак-Ив Кусто">
-                </div>
                 <div class="profile__info">
                     <div class="profile__info-block">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -42,14 +41,14 @@
                             alt="Гора Эльбрус">
                         <div class="element__group">
                             <h2 class="element__title">Гора Эльбрус</h2>
-                            <button class="element__like element__like_active" type="button"></button>
+                            <button class="element__like" type="button"></button>
                         </div>
                     </li>
                     <li class="element__card">
                         <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
                         <div class="element__group">
                             <h2 class="element__title">Домбай</h2>
-                            <button class="element__like element__like_active" type="button"></button>
+                            <button class="element__like" type="button"></button>
                         </div>
                     </li>
                     <li class="element__card">
@@ -57,21 +56,21 @@
                             alt="Гора Эльбрус">
                         <div class="element__group">
                             <h2 class="element__title">Гора Эльбрус</h2>
-                            <button class="element__like element__like_active" type="button"></button>
+                            <button class="element__like" type="button"></button>
                         </div>
                     </li>
                     <li class="element__card">
                         <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
                         <div class="element__group">
                             <h2 class="element__title">Домбай</h2>
-                            <button class="element__like element__like_active" type="button"></button>
+                            <button class="element__like" type="button"></button>
                         </div>
                     </li>
                     <li class="element__card">
                         <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаево">
                         <div class="element__group">
                             <h2 class="element__title">Карачаево-Черкессия</h2>
-                            <button class="element__like element__like_active" type="button"></button>
+                            <button class="element__like" type="button"></button>
                         </div>
                     </li>
                 </ul>
@@ -79,16 +78,16 @@
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__copyright">&COPY; 2020 Mesto Russia</p>
+            <p class="footer__copyright" lang="en">&COPY; 2020 Mesto Russia</p>
         </footer>
         <section class="popup">
             <div class="popup__container">
                 <button class="popup__close-icon" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form popup__form_edit" method="get" action="#">
-                    <input class="popup__input popup__input_field-name" placeholder="Жак-Ив-Кусто" value="Жак-Ив-Кусто"
+                <form class="popup__form" name="profileForm">
+                    <input class="popup__input popup__input_field_name" placeholder="Жак-Ив-Кусто" value="Жак-Ив-Кусто"
                         name="name" id="field-name" type="text" required>
-                    <input class="popup__input popup__input_field-text" placeholder="Исследователь океана"
+                    <input class="popup__input popup__input_field_text" placeholder="Исследователь океана"
                         value="Исследователь океана" name="field-text" id="text" type="text" required>
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>

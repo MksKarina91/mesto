@@ -5,6 +5,7 @@
   background: transparent url(../../../images/edit_btn.svg) no-repeat center;
   background-size: 10px;
   margin-left: 18px;
+  padding: 0;
   cursor: pointer;
   transition: opacity .5s ease;
 }
@@ -17,5 +18,6 @@
     height: 18px;
     align-self: baseline;
     background-size: 7.5px;
+    margin-left: 10px;
   }
 }
