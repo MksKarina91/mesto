@@ -5,6 +5,7 @@
   row-gap: 20px;
   column-gap: 17px;
   padding: 0;
-  grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+  grid-template-columns: repeat(auto-fit, 282px);
   place-items: center;
+  justify-content: center;
 }
