@@ -29,7 +29,7 @@
             </section>
             <section class="elements">
                 <ul class="element">
-                    <template id="element__template">
+                    <template class="element__template">
                         <li class="element__card">
                             <img class="element__image" src="" alt="">
                             <button class="element__delete" type="button"></button>
@@ -50,33 +50,37 @@
                 <button class="popup__close-icon popup__close_profile" type="button"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="profileForm">
-                    <input class="popup__input popup__input_field_name" placeholder="Жак-Ив-Кусто"
+                    <input class="popup__input popup__input_field_name" placeholder="Жак-Ив-Кусто" value="Жак-Ив-Кусто"
                         name="name" id="field-name" type="text" required>
-                    <input class="popup__input popup__input_field_text popup_field" placeholder="Исследователь океана"
-                       name="field-text" id="text" type="text" required>
+                    <input class="popup__input popup__input_field_text" placeholder="Исследователь океана"
+                        value="Исследователь океана" name="field-text" id="text" type="text" required>
                     <button class="popup__button popup__submit-button" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
-        <div class="popup popup__type_add-image">
+        <div class="popup popup_type_add-image">
             <div class="popup__container popup__container_add-image">
                 <button class="popup__close-icon popup__close_add-image" type="button"></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form class="popup__form popup__form_add-photo" name="addForm">
-                    <input class="popup__input popup__field_image-name" placeholder="Название"
+                <form class="popup__form" name="addForm">
+                    <input class="popup__input popup__field_image-name" placeholder="Название" value="Название"
                         name="image-name" id="image" type="text" required>
-                    <input class="popup__input popup__field_image popup_field" placeholder="Ссылка на картинку" name="image-link" id="link" type="url" required>
+                    <input class="popup__input popup__field_image" placeholder="Ссылка на картинку"
+                        value="Ссылка на картинку" name="image-link" id="link" type="url" required>
                     <button class="popup__button popup__create-button" type="submit">Создать</button>
                 </form>
             </div>
         </div>
-        <div class="popup popup__type_preview">
+        <div class="popup popup_type_preview" aria-hidden="true">
             <div class="popup__container popup__container_preview">
                 <img class="popup__image" src="" alt="">
                 <h2 class="popup__image-name"></h2>
-                <button class="popup__close-icon popup__close_preview" type="button"></button>
+                <button type="button" class="popup__close"></button>
             </div>
         </div>
+
+
+
 
         <script src="./scripts/index.js"></script>
     </div>
