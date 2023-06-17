@@ -6,15 +6,15 @@ const jobInput = document.querySelector('.popup__input_field_text');
 const popupWindow = document.querySelector('.popup_type_profile');
 const profileName = document.querySelector('.profile__name');
 const profileText = document.querySelector('.profile__text');
-const popupCloseButton = document.querySelector('.popup__close-icon');
+const popupCloseButton = popupWindow.querySelector('.popup__close-icon_profile');
 const formButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector('.profile__add-button');
-const popupAdd = document.querySelector('.popup__type_add-image');
-const closeAddButton = popupAdd.querySelector('.popup__close_add-image');
+const popupAdd = document.querySelector('.popup__type_add_image');
+const closeAddButton = popupAdd.querySelector('.popup__close_add_image');
 const formPlaceCreation = popupAdd.querySelector('.popup__form');
-const placeName = document.querySelector('.popup__field_image-name');
+const placeName = document.querySelector('.popup__field_image_name');
 const placeImage = document.querySelector('.popup__field_image');
-const popupTypePreview = document.querySelector('.popup__type-preview')
+const popupTypePreview = document.querySelector('.popup__type_preview')
 const closePreviewButton = popupTypePreview.querySelector('.popup__close-preview');
 const popupImage = popupTypePreview.querySelector('.popup__image');
 const popupImageName = popupTypePreview.querySelector('.popup__image-name');
@@ -117,8 +117,6 @@ function createCard(card) {
 
 }
 
-formButton.addEventListener('click', popupOpen);
-popupCloseButton.addEventListener('click', popupClose);
 closePreviewButton.addEventListener('click', function () {
   popupClose(popupTypePreview);
 })
