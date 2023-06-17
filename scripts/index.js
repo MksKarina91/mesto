@@ -3,18 +3,18 @@ const formElement = document.querySelector('.popup__form');
 // Находим поля формы в DOM
 const nameInput = document.querySelector('.popup__input_field_name');
 const jobInput = document.querySelector('.popup__input_field_text');
-const popupWindow = document.querySelector('.popup');
+const popupWindow = document.querySelector('.popup_type_profile');
 const profileName = document.querySelector('.profile__name');
 const profileText = document.querySelector('.profile__text');
 const popupCloseButton = document.querySelector('.popup__close-icon');
 const formButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector('.profile__add-button');
-const popupAdd = document.querySelector('.popup__type_add-image');
-const closeAddButton = popupAdd.querySelector('.popup__close_add-image');
+const popupAdd = document.querySelector('.popup__type_add_image');
+const closeAddButton = popupAdd.querySelector('.popup__close_add_image');
 const formPlaceCreation = popupAdd.querySelector('.popup__form');
-const titleInput = document.querySelector('.popup__field_image-name');
+const titleInput = document.querySelector('.popup__field_image_name');
 const imageInput = document.querySelector('.popup__field_image');
-const placeName = document.querySelector('.popup__field_image-name');
+const placeName = document.querySelector('.popup__field_image_name');
 const placeImage = document.querySelector('.popup__field_image');
 const popupTypePreview = document.querySelector('.popup__type_preview')
 const closePreviewButton = popupTypePreview.querySelector('.popup__close_preview');
@@ -24,13 +24,10 @@ const elementsItem = document.querySelector('.element');
 const cardTemplate = document.querySelector('#element__template').content;
 const card = cardTemplate.querySelector('element__card');
 
-profileName.value = nameInput.textContent;
-profileText.value = jobInput.textContent;
-
 function handleFormSubmit (evt) {
   evt.preventDefault();
-  nameInput.textContent = profileName.value;
-  jobInput.textContent = profileText.value;
+  profileName.textContent = nameInput.value;
+  profileText.textContent = jobInput.value;
   popupClose(popupWindow);
 }
 formElement.addEventListener('submit', handleFormSubmit);
