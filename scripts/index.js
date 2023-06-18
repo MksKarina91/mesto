@@ -37,6 +37,8 @@ function closePopup(elTarget) {
 
 formButton.addEventListener('click', function(){
   openPopup(popupWindow);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileText.textContent;
 })
 
 addButton.addEventListener('click', function(){
