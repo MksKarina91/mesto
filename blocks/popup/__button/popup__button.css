@@ -9,7 +9,7 @@
   background-color: #000000;
   border-radius: 2px;
   padding: 14px 124px 18px 125px;
-  margin: 48px 0 37px;
+  margin: 18px 0 37px;
   cursor: pointer;
   border: none;
   transition: opacity .5s ease;
@@ -23,6 +23,6 @@
     padding: 14px 82px;
     font-size: 14px;
     line-height: 17px;
-    margin: 45px 0 25px;
+    margin: 15px 0 25px;
   }
 }

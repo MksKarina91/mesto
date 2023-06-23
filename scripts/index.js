@@ -19,20 +19,38 @@ const elementsItem = document.querySelector('.element');
 const cardTemplate = document.querySelector('#element__template').content;
 const card = cardTemplate.querySelector('element__card');
 const closeButtons = document.querySelectorAll('.popup__close-icon');
+const popupClose = document.querySelectorAll('popup');
+
+const closePopupEsc = evt => {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+};
+const closePopupClickOverlay = evt => {
+  if (evt.currentTarget === evt.target) {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+  }
+};
 
 function handleFormSubmit (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileText.textContent = jobInput.value;
   closePopup(popupWindow);
-}
+};
 formElement.addEventListener('submit', handleFormSubmit);
 
 function openPopup(elTarget) {
   elTarget.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  elTarget.addEventListener('mousedown', closePopupClickOverlay);
 }
 function closePopup(elTarget) {
   elTarget.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
+  elTarget.removeEventListener('mousedown', closePopupClickOverlay);
 }
 
 formButton.addEventListener('click', function(){
@@ -50,7 +68,18 @@ closeButtons.forEach((button) => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
-
+popupClose.forEach((popup) => {
+  popup.addEventListener('keydown', function(evt) {
+    if (evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+  popup.addEventListener('click', (evt) => {
+    if (evt.currentTarget === evt.target) {
+      closePopup(popup);
+    }
+  });
+  })
 const initialCards = [
   {
     name: 'Архыз',
@@ -122,3 +151,4 @@ popupAdd.addEventListener('submit', function(evt){
   closePopup(popupAdd);
   evt.target.reset();
 })
+
