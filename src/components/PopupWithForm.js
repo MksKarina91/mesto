@@ -2,12 +2,12 @@ import { Popup } from "./Popup.js";
 export class PopupWithForm extends Popup {
   constructor(selector, handleSubmit, formSelector) {
     super(selector);
-    this.handleSubmit = handleSubmit;
+    this._handleSubmit = handleSubmit;
     this._form = this._popup.querySelector(formSelector);
+    this._inputList = this._form.querySelectorAll(".popup__input"); 
   }
 
   _getInputValues() {
-    this._inputList = this._form.querySelectorAll(".popup__input");
     this._inputValue = {};
     this._inputList.forEach((input) => {
       this._inputValue[input.name] = input.value;
@@ -17,8 +17,7 @@ export class PopupWithForm extends Popup {
 
   _setCardSubmit = (evt) => {
     evt.preventDefault();
-    this.values = this._getInputValues();
-    this.handleSubmit(this.values);
+    this._handleSubmit(this._getInputValues())
   };
 
   setEventListeners() {
