@@ -15,6 +15,14 @@ import {
   formValidators,
 } from "../components/utils/constants.js";
 
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-72',
+  headers: {
+    authorization: '705c00be-ed34-4118-b41b-e0ee6e452cf1',
+    'Content-Type': 'application/json',
+  },
+});
+
 addButton.addEventListener("click", function () {
   popupAddImage.open();
   formValidators["cardForm"].resetValidation();
