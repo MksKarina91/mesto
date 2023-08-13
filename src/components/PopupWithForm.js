@@ -4,20 +4,21 @@ export class PopupWithForm extends Popup {
     super(selector);
     this._handleSubmit = handleSubmit;
     this._form = this._popup.querySelector(formSelector);
-    this._inputList = this._form.querySelectorAll(".popup__input"); 
   }
 
   _getInputValues() {
-    this._inputValue = {};
-    this._inputList.forEach((input) => {
-      this._inputValue[input.name] = input.value;
-    });
-    return this._inputValue;
+    this._inputList = this._form.querySelectorAll(".popup__input");
+    this._formValues = {};
+    this._inputList.forEach(
+      (input) => (this._formValues[input.name] = input.value)
+    );
+    return this._formValues;
   }
 
   _setCardSubmit = (evt) => {
     evt.preventDefault();
-    this._handleSubmit(this._getInputValues())
+    this.values = this._getInputValues();
+    this._handleSubmit(this.values);
   };
 
   setEventListeners() {

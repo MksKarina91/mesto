@@ -9,6 +9,11 @@
   height: 19px;
   cursor: pointer;
 }
+
 .element__delete:hover {
   opacity: .5;
+}
+
+.element__delete_inactive {
+  display: none;
 }
