@@ -57,8 +57,7 @@ export const likeCounts = document.querySelector(".element__like-counts");
 export const avatarContainer = document.querySelector(
   ".profile__avatar-container"
 );
-export const profileAvatar = document.querySelector(".profile__avatar");
-export const addAvatarIcon = document.querySelector(".profile__add-avatar");
+export const profileAvatar = document.querySelector(".profile__add-avatar");
 
 export const buttonSaveNewElement = document.querySelector(
   ".popup__create-button"

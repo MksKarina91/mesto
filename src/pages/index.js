@@ -14,8 +14,6 @@ import {
   profileEditButton,
   addButton,
   profileAvatar,
-  avatarContainer,
-  addAvatarIcon,
   buttonSaveNewElement,
   buttonUpdateButton,
   buttonChangeAvatar,
@@ -32,20 +30,22 @@ const api = new Api({
 });
 
 function handleProfileFormSubmit(data) {
-  profileCard.setUserInfo(data);
   renderLoading(true, "Сохранение...", buttonUpdateButton);
   api
     .editUserInfo(data)
-    .catch((err) => {
-      console.log(err);
+    .then(() => {
+      profileCard.setUserInfo(data);
     })
     .then(() => {
       popupProfile.close();
     })
+    .catch((err) => console.log(`Ошибка в отправке данных профиля: ${err}`))
     .finally(() => {
       renderLoading(false, "Сохранить", buttonUpdateButton);
     });
 }
+
+
 
 profileEditButton.addEventListener("click", () => {
   popupProfile.open();
@@ -73,37 +73,29 @@ function createCard(item) {
     myId
   );
   const cardElement = newCard.generateCard();
-  newCard._handleTrashDisplay();
-  newCard._checkLikeColor();
   return cardElement;
 }
 
-function likeCard(likeCount, id, likeButton) {
+function likeCard(likeCount, id) {
   api
     .addLike(id)
-
     .then((res) => {
       likeCount.textContent = res.likes.length;
-      likeButton.classList.add("element__like_active");
     })
-
     .catch((err) => {
       console.log(err);
-    });
+    })
 }
 
-function dislikeCard(likeCount, id, likeButton) {
+function dislikeCard(likeCount, id) {
   api
     .deleteLike(id)
-
     .then((res) => {
       likeCount.textContent = res.likes.length;
-      likeButton.classList.remove("element__like_active");
     })
-
     .catch((err) => {
       console.log(err);
-    });
+    })
 }
 
 function handleCardClick(name, link) {
@@ -121,26 +113,32 @@ const popupAddImage = new PopupWithForm(
   handleCardSubmit,
   ".popup__form_add-element"
 );
+popupAddImage.setEventListeners();
 
 const popupProfile = new PopupWithForm(
   ".popup_type_profile",
   handleProfileFormSubmit,
   ".popup__form"
 );
+popupProfile.setEventListeners();
 
 const popupChangeAvatar = new PopupWithForm(
   ".popup_avatar_change",
   handleAvatarSubmit,
   ".popup__form_avatar_change"
 );
+popupChangeAvatar.setEventListeners();
 
 const removePopup = new PopupWithConfirm(
   ".popup_remove-card",
   ".popup__button-delete",
   handleDeleteCard
 );
+removePopup.setEventListeners();
 
 const popupTypePreview = new PopupWithImage(".popup_type_preview");
+popupTypePreview.setEventListeners();
+
 
 const cardsList = new Section(
   {
@@ -179,7 +177,7 @@ const getCards = () => {
     })
     .catch((err) => {
       console.log(err);
-    });
+    })
 };
 
 const getCurrentUserInfo = () => {
@@ -190,22 +188,21 @@ const getCurrentUserInfo = () => {
     })
     .catch((err) => {
       console.log(err);
-    });
+    })
 };
 
 function handleAvatarSubmit(data) {
   renderLoading(true, "Сохранение...", buttonChangeAvatar);
   api
     .changeAvatar(data)
-
     .then((res) => {
       profileCard.setUserAvatar(res);
     })
-    .catch((err) => {
-      console.log(err);
-    })
     .then(() => {
       popupChangeAvatar.close();
+    })
+    .catch((err) => {
+      console.log(err);
     })
     .finally(() => {
       renderLoading(false, "Сохранить", buttonChangeAvatar);
@@ -215,41 +212,27 @@ function handleAvatarSubmit(data) {
 function handleDeleteCard(card, cardId) {
   api
     .deleteCard(cardId)
-
     .then(() => {
       card.deleteCard();
     })
-
+    .then(() => {
+      removePopup.close();
+    })
     .catch((err) => {
       console.log(err);
     })
-
-    .then(() => {
-      removePopup.close();
-    });
 }
-
-avatarContainer.addEventListener("mouseover", () => {
-  profileAvatar.style.opacity = ".3";
-  addAvatarIcon.style.opacity = "1";
-});
-
-avatarContainer.addEventListener("mouseout", () => {
-  profileAvatar.style.opacity = "1";
-  addAvatarIcon.style.opacity = "0";
-});
 
 const promises = [getCards(), getCurrentUserInfo()];
 Promise.all(promises)
+  .catch((err) => {
+    console.log(err);
+  })
   .then(([cards, userInfo]) => {
     myId = userInfo._id;
     profileCard.setUserInfo(userInfo);
     profileCard.setUserAvatar(userInfo);
     cardsList.renderItems(cards);
-  })
-
-  .catch((err) => {
-    console.log(err);
   });
 
 profileAvatar.addEventListener("click", () => {
