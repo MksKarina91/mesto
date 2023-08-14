@@ -76,11 +76,12 @@ function createCard(item) {
   return cardElement;
 }
 
+
 function likeCard(likeCount, id) {
   api
     .addLike(id)
-    .then((res) => {
-      likeCount.textContent = res.likes.length;
+    .then(() => {
+      this.updateLikes(likeCount);
     })
     .catch((err) => {
       console.log(err);
@@ -90,8 +91,8 @@ function likeCard(likeCount, id) {
 function dislikeCard(likeCount, id) {
   api
     .deleteLike(id)
-    .then((res) => {
-      likeCount.textContent = res.likes.length;
+    .then(() => {
+      this.updateLikes(likeCount);
     })
     .catch((err) => {
       console.log(err);
@@ -228,7 +229,7 @@ Promise.all(promises)
   .catch((err) => {
     console.log(err);
   })
-  .then(([cards, userInfo]) => {
+  .then(([cards, userInfo, likes]) => {
     myId = userInfo._id;
     profileCard.setUserInfo(userInfo);
     profileCard.setUserAvatar(userInfo);
